@@ -354,6 +354,14 @@ describe('Option `sort-order`, process', function() {
       });
       return test.shouldBeEqual('issue-332-2.sass', 'issue-332-2.expected.sass');
     });
+
+    it('Issue 272', function() {
+      let test = new Test(this, {
+        'sort-order': ['color', 'font-family'],
+        'sort-order-fallback': 'abc'
+      });
+      return test.shouldBeEqual('issue-272.sass');
+    });
   });
 
   describe('scss', function() {
@@ -488,6 +496,13 @@ describe('Option `sort-order`, process', function() {
     it.skip('Issue 399', function() {
       let test = new Test(this, {'sort-order': [['$extend', 'color']]});
       return test.shouldBeEqual('issue-399.expected.scss');
+    });
+
+    it('Issue 429', function() {
+      let test = new Test(this, {
+        'sort-order': [['font-size'], ['background'], ['...']]
+      });
+      return test.shouldBeEqual('issue-429.scss');
     });
   });
 });
